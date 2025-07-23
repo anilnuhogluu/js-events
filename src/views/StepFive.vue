@@ -2,6 +2,9 @@
 import TheTopic from '@/components/TheTopic.vue';
 import TheModal from '@/components/TheModal.vue';
 import ReusableList from '@/components/ReusableList.vue';
+import ReusableTable from '@/components/ReusableTable.vue';
+import ExpandableScript from '@/components/ExpandableScript.vue';
+import SplitShowcase from '@/components/SplitShowcase.vue';
 
 import { ref } from 'vue';
 
