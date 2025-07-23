@@ -123,9 +123,8 @@ async function fetchWeather() {
 
     const weatherUrl = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey + "&units=metric";
     const weatherRes = await fetch(weatherUrl);
-    const weatherData = await weatherRes.json();
-
-    weatherData.value = weatherData;
+    const weatherResponse = await weatherRes.json();
+    weatherData.value = weatherResponse;
   } catch (err: any) {
     weatherError.value = "API hatası: " + err;
   }
@@ -208,21 +207,39 @@ function clearWeatherResult() {
           <input id="city" v-model="weatherCity" type="text" placeholder="Şehir adı" style="padding: 5px; margin: 0 10px;" />
           <button @click="fetchWeather" style="padding: 5px; margin: 0 10px;">Hava Durumu Getir</button>
           <button @click="clearWeatherResult" style="padding: 5px; margin: 0 10px;">Sonuçları Sıfırla</button>
-          <div id="weatherResult" style="margin-top: 15px;">
-            <div v-if="weatherError" style="color: red;">{{ weatherError }}</div>
-            <div v-else-if="weatherData">
-              <p><strong>{{ weatherData.name }}</strong></p>
-              <p>{{ weatherData.weather[0].description }}</p>
-              <p>Sıcaklık: {{ weatherData.main.temp }}°C</p>
-              <img :src="'https://openweathermap.org/img/wn/' + weatherData.weather[0].icon + '@2x.png'" />
-            </div>
-          </div>
         </div>
       </template>
       <template #command>
         <div>API Key ve şehir adı girip "Hava Durumu Getir" butonuna basınca, OpenWeather API'den hava durumu bilgileri çekilir ve ekranda gösterilir.</div>
       </template>
     </SplitShowcase>
+    <div id="weatherResult" style="margin-top: 15px; width: 100%;">
+            <div v-if="weatherError" style="color: red;">{{ weatherError }}</div>
+            <div v-else-if="weatherData" style="color: #616161;">
+              <div style="text-align: center; padding: 15px; background: #f5f5f5; border-radius: 8px;">
+                <h3><strong>{{ weatherData.name }}, {{ weatherData.sys.country }}</strong></h3>
+                <img :src="'https://openweathermap.org/img/wn/' + weatherData.weather[0].icon + '@2x.png'" style="width: 80px;" />
+                <p style="font-size: 18px; margin: 5px 0;">{{ weatherData.weather[0].description }}</p>
+                <p style="font-size: 24px; font-weight: bold; margin: 10px 0;">{{ Math.round(weatherData.main.temp) }}°C</p>
+                <p>Hissedilen: {{ Math.round(weatherData.main.feels_like) }}°C</p>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; text-align: left;">
+                  <div>
+                    <p><strong>Nem:</strong> {{ weatherData.main.humidity }}%</p>
+                    <p><strong>Basınç:</strong> {{ weatherData.main.pressure }} hPa</p>
+                    <p><strong>Rüzgar:</strong> {{ weatherData.wind.speed }} m/s</p>
+                    <p><strong>Görüş:</strong> {{ weatherData.visibility / 1000 }} km</p>
+                  </div>
+                  <div>
+                    <p><strong>Min:</strong> {{ Math.round(weatherData.main.temp_min) }}°C</p>
+                    <p><strong>Max:</strong> {{ Math.round(weatherData.main.temp_max) }}°C</p>
+                    <p><strong>Bulut:</strong> {{ weatherData.clouds.all }}%</p>
+                    <p><strong>Koordinat:</strong> {{ weatherData.coord.lat }}, {{ weatherData.coord.lon }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
     <br>
   </div>
 </template>
