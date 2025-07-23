@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import TheTopic from '@/components/TheTopic.vue';
-import Table from '@/components/ReusableTable.vue';
-import List from '@/components/ReusableList.vue';
 
 const headerss = ['Olay Türü', 'Açıklama']
 const rowss = [
@@ -25,7 +23,7 @@ const rows = [
 const eventFlow = [
   'Kullanıcı sayfada bir işlem yapar',
   'Tarayıcı bunu bir event olarak algılar',
-  'Biz bu event’i dinleyerek (event listener) bir aksiyon alırız',
+  'Biz bu event’i dinleyerek (event ReusableListener) bir aksiyon alırız',
 ]
 
 const importantPoints = [
@@ -59,22 +57,22 @@ const developerPoints = [
     <TheTopic title="Event (Olay) Nedir?" :msg="'Event, bir sistemde “bir şeyin olması” anlamına gelir.<br> Web dünyasında bu \'bir şey\', çoğu zaman kullanıcı tarafından başlatılan bir etkileşimdir. <br> Tarayıcı tarafında bir event, şu sorunun yanıtıdır:“Şu anda sayfada bir şey oldu mu?”'" />
     <br>
     <TheTopic title="Neden Önemlidir?" />
-    <List :items="importantPoints" />
+    <ReusableList :items="importantPoints" />
     <br>
     <TheTopic title="Event'ler ile Sayfa “Statik” olmaktan çıkar" />
-    <List :items="staticPoints" />
+    <ReusableList :items="staticPoints" />
     <br>
     <TheTopic title="Kavramsal Düşünce: Event bir “sinyal“ dir" :msg="'Event, sistem içinde “bir şey oldu“ sinyalidir. Bu sinyali dinleyen parçalar, buna tepki verir.'" />
-    <List :items="examples" />
+    <ReusableList :items="examples" />
     <br>
     <TheTopic title="Event Akışı"  />
-    <List :items="eventFlow" />
+    <ReusableList :items="eventFlow" />
     <br>
     <TheTopic title="Yazılım Geliştirici Neden Bilmelidir?"  />
-    <List :items="developerPoints" />
+    <ReusableList :items="developerPoints" />
     <br>
     <TheTopic title="Gerçek Hayattan Event Karşılıkları (Case Düşüncesiyle)"  />
-    <Table :headers="headers" :rows="rows" />
+    <ReusableTable :headers="headers" :rows="rows" />
     <br>
   </div>
 </template>

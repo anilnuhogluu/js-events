@@ -1,12 +1,5 @@
 <script setup lang="ts">
-import TheTopic from '@/components/TheTopic.vue';
-import Table from '@/components/ReusableTable.vue';
-import Script from '@/components/ExpandableScript.vue';
-import SplitShowcase from '@/components/SplitShowcase.vue';
-import List from '@/components/ReusableList.vue';
-import TheModal from '@/components/TheModal.vue';
 import { ref } from 'vue';
-import { setTimeout } from 'timers/promises';
 
 const modalVisible = ref(false);
 const modalMessage = ref('');
@@ -124,20 +117,20 @@ const promiseAllCode = `
 `
 
 const getRequestCode = `
-  document.querySelector("#get-posts").addEventListener("click", async () => {
+  document.querySelector("#get-posts").addEventReusableListener("click", async () => {
     const res = await fetch("https://jsonplaceholder.typicode.com/posts");
     const posts = await res.json();
 
-    const list = document.querySelector("#post-list");
-    list.innerHTML = posts.slice(0, 5).map(p => '<li>' + p.title + '</li>').join("");
+    const ReusableList = document.querySelector("#post-ReusableList");
+    ReusableList.innerHTML = posts.slice(0, 5).map(p => '<li>' + p.title + '</li>').join("");
   });
 `
 
-const postList = ref<string[]>([]);
+const postReusableList = ref<string[]>([]);
 async function getPosts() {
   const res = await fetch("https://jsonplaceholder.typicode.com/posts");
   const posts = await res.json();
-  postList.value = posts.slice(0, 5).map((p: any) => p.title);
+  postReusableList.value = posts.slice(0, 5).map((p: any) => p.title);
 }
 
 const postRequestCode = `
@@ -199,13 +192,13 @@ async function sendPost() {
     <TheTopic title="Fetch API ile Veri Çekme" />
     <br>
     <TheTopic title="Promise Nedir?" msg="Promise, JavaScript’te asenkron işlemleri daha kontrollü ve okunabilir bir şekilde yönetmek için kullanılan bir yapıdır."/>
-    <List :items="promiseDetails" />
+    <ReusableList :items="promiseDetails" />
     <TheTopic msg="Üç farklı durumda olabilir:"/>
-    <List :items="promiseFlow" />
+    <ReusableList :items="promiseFlow" />
     <br>
-    <Script title="Promise">
+    <ExpandableScript title="Promise">
       {{ promiseCode }}
-    </Script>
+    </ExpandableScript>
     <SplitShowcase>
       <template #ui>
         <button @click="veriGetir.then(data => console.log(data)).catch(err => console.error(err));" style="padding: 5px; margin: 0 10px;">Resolve</button>
@@ -222,9 +215,9 @@ async function sendPost() {
     <TheTopic title="fetch() Nedir?" msg="fetch() tarayıcının yerleşik Web API’lerinden biridir. Sunucudan veri almak veya sunucuya veri göndermek için kullanılır."/>
     <TheTopic msg="Her zaman bir Promise döner.
     "/>
-    <Script title="fetch()">
+    <ExpandableScript title="fetch()">
       {{ fetchCodes }}
-    </Script>
+    </ExpandableScript>
     <SplitShowcase>
       <template #ui>
         <button @click="fetchData" style="padding: 5px; margin: 0 10px;">Fetch Data</button>
@@ -236,62 +229,62 @@ async function sendPost() {
     </SplitShowcase>
     <br>
     <TheTopic title=".then() ve .catch() Nedir?" />
-    <List :items="['.then(): İşlem başarılıysa çalışır.', '.catch(): Bir hata olursa çalışır.']"/>
+    <ReusableList :items="['.then(): İşlem başarılıysa çalışır.', '.catch(): Bir hata olursa çalışır.']"/>
     <br>
     <TheTopic title="async/await ile Fetch Kullanımı" msg="fetch() gibi API’ler asenkron çalışır. Bu, işlemlerin hemen değil, tamamlandığında sonuç vereceği anlamına gelir."/>
     <TheTopic msg="Eskiden Promise.then() zincirleriyle bu işlemler yapılırdı. Ancak:"/>
-    <List :items="['Kodlar iç içe geçer', 'Hata yönetimi zorlaşır', 'Okunabilirlik azalır']" />
+    <ReusableList :items="['Kodlar iç içe geçer', 'Hata yönetimi zorlaşır', 'Okunabilirlik azalır']" />
     <TheTopic msg="Bu sorunları çözmek için ES2017 (ES8) ile async/await geldi."/>
     <br>
-    <Script title="Temel Yapısı">
+    <ExpandableScript title="Temel Yapısı">
       {{ asyncAwaitCode  }}
-    </Script>
+    </ExpandableScript>
     <br>
-    <Table :headers="['Satır', 'Açıklama']" :rows="[['async function', 'Bu fonksiyonun içinde await kullanılabilir hale gelir.'], ['await fetch(...)', 'fetch() işlemi bitene kadar beklenir, sonucu response değişkenine atanır.'], ['await response.json()', 'Gelen cevabı JavaScript nesnesine çevirir, yine beklenir.'], ['try/catch', 'Olası hatalar catch bloğunda kontrol altına alınır.']]" />
+    <ReusableTable :headers="['Satır', 'Açıklama']" :rows="[['async function', 'Bu fonksiyonun içinde await kullanılabilir hale gelir.'], ['await fetch(...)', 'fetch() işlemi bitene kadar beklenir, sonucu response değişkenine atanır.'], ['await response.json()', 'Gelen cevabı JavaScript nesnesine çevirir, yine beklenir.'], ['try/catch', 'Olası hatalar catch bloğunda kontrol altına alınır.']]" />
     <br>
     <TheTopic title="Avantajları:"/>
-    <List :items="['Daha okunabilir: Kod senkron gibi akar', 'Hata yönetimi daha net (try/catch)', 'Zincirleme (.then().then()) gerekmez', 'Debug etmek kolay']"/>
+    <ReusableList :items="['Daha okunabilir: Kod senkron gibi akar', 'Hata yönetimi daha net (try/catch)', 'Zincirleme (.then().then()) gerekmez', 'Debug etmek kolay']"/>
     <br>
-    <Script title="Gerçek Kullanım:">
+    <ExpandableScript title="Gerçek Kullanım:">
       {{ asyncAwaitCode2  }}
-    </Script>
+    </ExpandableScript>
     <br>
     <TheTopic title="Dikkat Edilmesi Gerekenler:" />
-    <List :items="['await sadece async fonksiyonlar içinde çalışır.', 'fetch() işlemi başarılı bile olsa HTTP hatası dönebilir (res.ok ile kontrol et).', 'await sırayla çalışır → paralel işlemlerde Promise.all tercih edilebilir.']"/>
+    <ReusableList :items="['await sadece async fonksiyonlar içinde çalışır.', 'fetch() işlemi başarılı bile olsa HTTP hatası dönebilir (res.ok ile kontrol et).', 'await sırayla çalışır → paralel işlemlerde Promise.all tercih edilebilir.']"/>
     <br>
-    <Script title="await">
+    <ExpandableScript title="await">
       {{  awaitCode  }}
-    </Script>
+    </ExpandableScript>
     <br>
-    <Script title="Promise.all">
+    <ExpandableScript title="Promise.all">
       {{  promiseAllCode  }}
-    </Script>
+    </ExpandableScript>
     <br>
     <div class="divider"></div>
     <br>
     <TheTopic title="fetch() - GET" />
-    <Script title="fetch() ile GET">
+    <ExpandableScript title="fetch() ile GET">
       {{ getRequestCode }}
-    </Script>
+    </ExpandableScript>
     <br>
     <SplitShowcase>
       <template #ui>
         <button id="get-posts" @click="getPosts" style="padding: 5px; margin: 0 10px;">Postları Getir</button>
-        <ul id="post-list">
-          <li v-for="(title, i) in postList" :key="i">{{ title }}</li>
+        <ul id="post-ReusableList">
+          <li v-for="(title, i) in postReusableList" :key="i">{{ title }}</li>
         </ul>
       </template>
       <template #command>
-        <div>Butona basınca ilk 5 post başlığı listelenir.</div>
+        <div>Butona basınca ilk 5 post başlığı ReusableListelenir.</div>
       </template>
     </SplitShowcase>
     <br>
     <div class="divider"></div>
     <br>
     <TheTopic title="fetch() - POST" />
-    <Script title="fetch() ile POST">
+    <ExpandableScript title="fetch() ile POST">
       {{ postRequestCode }}
-    </Script>
+    </ExpandableScript>
     <br>
     <SplitShowcase>
       <template #ui style="display: flex !important; flex-direction: column !important;">

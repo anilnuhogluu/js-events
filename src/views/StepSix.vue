@@ -1,12 +1,5 @@
 <script setup lang="ts">
-import TheTopic from '@/components/TheTopic.vue';
-import Table from '@/components/ReusableTable.vue';
-import Script from '@/components/ExpandableScript.vue';
-import SplitShowcase from '@/components/SplitShowcase.vue';
-import List from '@/components/ReusableList.vue';
-import TheModal from '@/components/TheModal.vue';
 import { ref } from 'vue';
-import { setTimeout } from 'timers/promises';
 
 const modalVisible = ref(false);
 const modalMessage = ref('');
@@ -158,9 +151,9 @@ function clearWeatherResult() {
     <TheTopic title="Kullanım Hedefi:"/>
     <List :items="['Kullanıcıdan GitHub kullanıcı adı al', 'https://api.github.com/users/USERNAME adresine istek at', 'Gelen veriyi DOM\'da görüntüle']"/>
     <br>
-    <Script title="Github üzerinden kullanıcı bilgilerini çekme">
+    <ExpandableScript title="Github üzerinden kullanıcı bilgilerini çekme">
       {{ githubExampleCode  }}
-    </Script>
+    </ExpandableScript>
     <br>
     <List :items="['fetch() ile veri çekiyoruz', 'async/await kullanımı', 'API dönen JSON objesi', 'DOM’a veriyi yerleştirme']"/>
     <br>
@@ -198,9 +191,9 @@ function clearWeatherResult() {
     <TheTopic title="Hazırlık:"/>
     <List :items="['https://openweathermap.org/ → kayıt → API Key alın', 'Geo API: https://api.openweathermap.org/geo/1.0/direct?q=ISTANBUL&limit=1&appid=YOUR_KEY', 'Weather API: https://api.openweathermap.org/data/2.5/weather?lat=41.0082&lon=28.9784&appid=YOUR_KEY&units=metric']"/>
     <br>
-    <Script title="OpenWeather API ile Hava Durumu">
+    <ExpandableScript title="OpenWeather API ile Hava Durumu">
       {{ weatherExample }}
-    </Script>
+    </ExpandableScript>
     <br>
     <SplitShowcase>
       <template #ui>

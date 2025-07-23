@@ -1,10 +1,4 @@
 <script setup lang="ts">
-import TheTopic from '@/components/TheTopic.vue';
-import Table from '@/components/ReusableTable.vue';
-import List from '@/components/ReusableList.vue';
-import Script from '@/components/ExpandableScript.vue';
-import SplitShowcase from '@/components/SplitShowcase.vue';
-import TheModal from '@/components/TheModal.vue';
 import { ref, nextTick, onMounted } from 'vue';
 
 const modalVisible = ref(false);
@@ -330,9 +324,9 @@ onMounted(() => {
     <TheTopic title="Mouse Events Kullanımları"/>
     <br>
 
-    <Script title="Click Event">
+    <ExpandableScript title="Click Event">
       {{ clickCode }}
-    </Script>
+    </ExpandableScript>
 
     <br>
 
@@ -347,9 +341,9 @@ onMounted(() => {
 
     <br>
 
-    <Script title="Mouseover Event">
+    <ExpandableScript title="Mouseover Event">
       {{ contextMenuCode }}
-    </Script>
+    </ExpandableScript>
 
     <br>
 
@@ -364,9 +358,9 @@ onMounted(() => {
 
     <br>
 
-    <Script title="Mouseout Event">
+    <ExpandableScript title="Mouseout Event">
       {{ mouseoverCode }}
-    </Script>
+    </ExpandableScript>
 
     <br>
 
@@ -381,9 +375,9 @@ onMounted(() => {
 
     <br>
 
-    <Script title="Contextmenu Event">
+    <ExpandableScript title="Contextmenu Event">
       {{ mouseoutCode }}
-    </Script>
+    </ExpandableScript>
     <br>
 
     <SplitShowcase>
@@ -404,9 +398,9 @@ onMounted(() => {
     <TheTopic title="Keyboard Events Kullanımları"/>
     <br>
 
-    <Script title="Keyup Event">
+    <ExpandableScript title="Keyup Event">
       {{ keyupCode }}
-    </Script>
+    </ExpandableScript>
 
     <br>
 
@@ -421,9 +415,9 @@ onMounted(() => {
 
     <br>
 
-    <Script title="Keydown Event">
+    <ExpandableScript title="Keydown Event">
       {{ keydownCode }}
-    </Script>
+    </ExpandableScript>
 
     <br>
 
@@ -438,9 +432,9 @@ onMounted(() => {
 
     <br>
 
-    <Script title="Keypress Event">
+    <ExpandableScript title="Keypress Event">
       {{ keypressCode }}
-    </Script>
+    </ExpandableScript>
 
     <br>
 
@@ -460,9 +454,9 @@ onMounted(() => {
     <Table :headers="headers" :rows="formInputEvents" />
     <br>
 
-    <Script title="Input Event">
+    <ExpandableScript title="Input Event">
       {{ inputCode }}
-    </Script>
+    </ExpandableScript>
 
     <br>
 
@@ -477,9 +471,9 @@ onMounted(() => {
 
     <br>
 
-    <Script title="Focus Event">
+    <ExpandableScript title="Focus Event">
       {{ focusCode }}
-    </Script>
+    </ExpandableScript>
 
     <br>
 
@@ -494,9 +488,9 @@ onMounted(() => {
 
     <br>
 
-    <Script title="Change Event">
+    <ExpandableScript title="Change Event">
       {{ changeCode }}
-    </Script>
+    </ExpandableScript>
 
     <br>
 
@@ -515,9 +509,9 @@ onMounted(() => {
 
     <br>
 
-    <Script title="Blur Event">
+    <ExpandableScript title="Blur Event">
       {{ blurCode }}
-    </Script>
+    </ExpandableScript>
 
     <br>
 
@@ -532,9 +526,9 @@ onMounted(() => {
 
     <br>
 
-    <Script title="Submit Event">
+    <ExpandableScript title="Submit Event">
       {{ submitCode }}
-    </Script>
+    </ExpandableScript>
 
     <br>
 
@@ -556,9 +550,9 @@ onMounted(() => {
     <TheTopic title="Clipboard Events" msg="Kullanıcının bir öğeyi kopyalaması, kesmesi veya yapıştırması gibi işlem sırasında tetiklenir. Özellikle güvenlik, metin işleme veya kullanıcı deneyimi açısından önemlidir." />
     <Table :headers="headers" :rows="clipboardEvents" />
     <br>
-       <Script title="Copy Event">
+       <ExpandableScript title="Copy Event">
       {{ copyCode }}
-    </Script>
+    </ExpandableScript>
     <br>
     <SplitShowcase>
       <template #ui>
@@ -569,9 +563,9 @@ onMounted(() => {
       </template>
     </SplitShowcase>
     <br>
-    <Script title="Cut Event">
+    <ExpandableScript title="Cut Event">
       {{ cutCode }}
-    </Script>
+    </ExpandableScript>
     <br>
     <SplitShowcase>
       <template #ui>
@@ -582,9 +576,9 @@ onMounted(() => {
       </template>
     </SplitShowcase>
     <br>
-    <Script title="Paste Event">
+    <ExpandableScript title="Paste Event">
       {{ pasteCode }}
-    </Script>
+    </ExpandableScript>
     <br>
     <SplitShowcase>
       <template #ui>
@@ -600,9 +594,9 @@ onMounted(() => {
     <TheTopic title="Drag & Drop Events" msg="Bir öğeyi sürükleme ve bırakma etkileşimlerini kontrol etmeye yarar. Dosya yüklemeleri, listelerde öğe sıralama gibi işlemler için kullanılır." />
     <Table :headers="headers" :rows="dragDropEvents" />
     <br>
-    <Script title="Dragstart Event">
+    <ExpandableScript title="Dragstart Event">
       {{ dragstartCode }}
-    </Script>
+    </ExpandableScript>
     <br>
     <SplitShowcase>
       <template #ui>
@@ -615,9 +609,9 @@ onMounted(() => {
       </template>
     </SplitShowcase>
     <br>
-    <Script title="Dragover Event">
+    <ExpandableScript title="Dragover Event">
       {{ dragoverCode }}
-    </Script>
+    </ExpandableScript>
     <br>
     <SplitShowcase>
       <template #ui>
@@ -631,9 +625,9 @@ onMounted(() => {
       </template>
     </SplitShowcase>
     <br>
-    <Script title="Drop Event">
+    <ExpandableScript title="Drop Event">
       {{ dropCode }}
-    </Script>
+    </ExpandableScript>
     <br>
     <SplitShowcase>
       <template #ui>
@@ -652,9 +646,9 @@ onMounted(() => {
     <TheTopic title="Window & Document Events" msg="Tarayıcı penceresi veya sayfa (document) ile ilgili olayları kapsar. Sayfa yüklendiğinde, boyutu değiştiğinde, scroll yapıldığında veya kullanıcı sayfadan çıkmak üzereyken devreye girer."  />
     <Table :headers="headers" :rows="windowNavigationEvents" />
     <br>
-     <Script title="Resize Event">
+     <ExpandableScript title="Resize Event">
       {{ resizeCode }}
-    </Script>
+    </ExpandableScript>
     <br>
     <SplitShowcase>
       <template #ui>
@@ -665,9 +659,9 @@ onMounted(() => {
       </template>
     </SplitShowcase>
     <br>
-    <Script title="Scroll Event">
+    <ExpandableScript title="Scroll Event">
       {{ scrollCode }}
-    </Script>
+    </ExpandableScript>
     <br>
     <SplitShowcase>
       <template #ui>
@@ -680,9 +674,9 @@ onMounted(() => {
       </template>
     </SplitShowcase>
     <br>
-    <Script title="Hashchange Event">
+    <ExpandableScript title="Hashchange Event">
       {{ hashchangeCode }}
-    </Script>
+    </ExpandableScript>
     <br>
     <SplitShowcase>
       <template #ui>
@@ -702,9 +696,9 @@ onMounted(() => {
     <TheTopic title="Network & Media Events" msg="İnternet bağlantısı durum değişiklikleri ve medya oynatımıyla ilgili olayları kapsar. Kullanıcının çevrimdışı kalması, videonun başlaması ya da bitmesi gibi durumlarda kullanılır." />
     <Table :headers="headers" :rows="networkMediaEvents" />
     <br>
-    <Script title="Play Event">
+    <ExpandableScript title="Play Event">
       {{ playCode }}
-    </Script>
+    </ExpandableScript>
     <br>
     <SplitShowcase>
       <template #ui>
@@ -717,9 +711,9 @@ onMounted(() => {
       </template>
     </SplitShowcase>
     <br>
-    <Script title="Pause Event">
+    <ExpandableScript title="Pause Event">
       {{ pauseCode }}
-    </Script>
+    </ExpandableScript>
     <br>
     <SplitShowcase>
       <template #ui>
@@ -732,9 +726,9 @@ onMounted(() => {
       </template>
     </SplitShowcase>
     <br>
-    <Script title="Ended Event">
+    <ExpandableScript title="Ended Event">
       {{ endedCode }}
-    </Script>
+    </ExpandableScript>
     <br>
     <SplitShowcase>
       <template #ui>
@@ -752,9 +746,9 @@ onMounted(() => {
     <TheTopic title="Animation & Transition Events" msg="CSS ile tanımlanan animasyonlar ve geçişler sırasında gerçekleşen olaylardır. Bir animasyon başladığında, sona erdiğinde veya tekrar ettiğinde devreye girer." />
     <Table :headers="headers" :rows="animationTransitionEvents" />
     <br>
-    <Script title="Animationstart Event">
+    <ExpandableScript title="Animationstart Event">
       {{ animationstartCode }}
-    </Script>
+    </ExpandableScript>
     <br>
     <SplitShowcase>
       <template #ui>
@@ -768,9 +762,9 @@ onMounted(() => {
       </template>
     </SplitShowcase>
     <br>
-    <Script title="Animationiteration Event">
+    <ExpandableScript title="Animationiteration Event">
       {{ animationiterationCode }}
-    </Script>
+    </ExpandableScript>
     <br>
     <SplitShowcase>
       <template #ui>
@@ -784,9 +778,9 @@ onMounted(() => {
       </template>
     </SplitShowcase>
     <br>
-    <Script title="Transitionstart Event">
+    <ExpandableScript title="Transitionstart Event">
       {{ transitionstartCode }}
-    </Script>
+    </ExpandableScript>
     <br>
     <SplitShowcase>
       <template #ui>
@@ -797,9 +791,9 @@ onMounted(() => {
       </template>
     </SplitShowcase>
     <br>
-    <Script title="Transitionend Event">
+    <ExpandableScript title="Transitionend Event">
       {{ transitionendCode }}
-    </Script>
+    </ExpandableScript>
     <br>
     <SplitShowcase>
       <template #ui>
@@ -823,11 +817,11 @@ onMounted(() => {
     <Table :headers="headers" :rows="touchPointerEvents" />
     <br>
     <!-- Touchstart örneği -->
-    <Script title="Touchstart Event">
+    <ExpandableScript title="Touchstart Event">
       document.querySelector('.touchstart-box').addEventListener('touchstart', function () {
         alert('Touchstart Event\'i tetiklendi!');
       });
-    </Script>
+    </ExpandableScript>
     <br>
     <SplitShowcase>
       <template #ui>
@@ -839,11 +833,11 @@ onMounted(() => {
     </SplitShowcase>
     <br>
     <!-- Touchend örneği -->
-    <Script title="Touchend Event">
+    <ExpandableScript title="Touchend Event">
       document.querySelector('.touchend-box').addEventListener('touchend', function () {
         alert('Touchend Event\'i tetiklendi!');
       });
-    </Script>
+    </ExpandableScript>
     <br>
     <SplitShowcase>
       <template #ui>
@@ -855,11 +849,11 @@ onMounted(() => {
     </SplitShowcase>
     <br>
     <!-- Touchmove örneği -->
-    <Script title="Touchmove Event">
+    <ExpandableScript title="Touchmove Event">
       document.querySelector('.touchmove-box').addEventListener('touchmove', function () {
         alert('Touchmove Event\'i tetiklendi!');
       });
-    </Script>
+    </ExpandableScript>
     <br>
     <SplitShowcase>
       <template #ui>
@@ -876,7 +870,7 @@ onMounted(() => {
     <Table :headers="headers" :rows="visibilityStorageEvents" />
     <br>
     <!-- visibilitychange örneği -->
-    <Script title="Visibilitychange Event">
+    <ExpandableScript title="Visibilitychange Event">
       document.addEventListener('visibilitychange', function () {
         if (document.visibilityState === 'hidden') {
           alert('Sekme gizlendi!');
@@ -884,7 +878,7 @@ onMounted(() => {
           alert('Sekme tekrar görünür!');
         }
       });
-    </Script>
+    </ExpandableScript>
     <br>
     <SplitShowcase>
       <template #ui>
@@ -896,11 +890,11 @@ onMounted(() => {
     </SplitShowcase>
     <br>
     <!-- storage örneği -->
-    <Script title="Storage Event">
+    <ExpandableScript title="Storage Event">
       window.addEventListener('storage', function (e) {
         alert('localStorage başka bir sekmede değişti!');
       });
-    </Script>
+    </ExpandableScript>
     <br>
     <SplitShowcase>
       <template #ui>
@@ -918,14 +912,14 @@ onMounted(() => {
     <Table :headers="headers" :rows="observerLikeMechanisms" />
     <br>
     <!-- MutationObserver örneği -->
-    <Script title="MutationObserver Kullanımı">
+    <ExpandableScript title="MutationObserver Kullanımı">
       const target = document.querySelector('.mutation-box');
       const observer = new MutationObserver(function(mutationsList, observer) {
         alert('MutationObserver tetiklendi!');
       });
       observer.observe(target, { childList: true });
       // Buton ile target'ın içeriği değiştirilebilir
-    </Script>
+    </ExpandableScript>
     <br>
     <SplitShowcase>
       <template #ui>

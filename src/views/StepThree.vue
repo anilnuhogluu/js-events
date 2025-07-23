@@ -1,10 +1,4 @@
 <script setup lang="ts">
-import TheTopic from '@/components/TheTopic.vue';
-import Table from '@/components/ReusableTable.vue';
-import Script from '@/components/ExpandableScript.vue';
-import SplitShowcase from '@/components/SplitShowcase.vue';
-import List from '@/components/ReusableList.vue';
-import TheModal from '@/components/TheModal.vue';
 import { ref } from 'vue';
 
 const modalVisible = ref(false);
@@ -36,24 +30,24 @@ const eventFlow = [
   'key, clientX, ctrlKey, timeStamp gibi onlarca özellik daha'
 ];
 
-const buttonCode = `document.querySelector('.click-button').addEventListener('click', function (event) {
+const buttonCode = `document.querySelector('.click-button').addEventReusableListener('click', function (event) {
   console.log(event.target); // Tıklanan buton
   console.log(event.type);   // "click"
 });`
 
 const delegationFlow = [
-  'Performans: Çok sayıda öğeye ayrı ayrı event listener tanımlamak yerine tek bir listener yeterlidir.',
+  'Performans: Çok sayıda öğeye ayrı ayrı event ReusableListener tanımlamak yerine tek bir ReusableListener yeterlidir.',
   'Dinamik öğeler: Sonradan eklenen öğeler de otomatik olarak yönetilebilir.',
   'DOM sade kalır.'
 ]
 
-const changeCode = `document.querySelector('.change-select').addEventListener('change', function (event) {
+const changeCode = `document.querySelector('.change-select').addEventReusableListener('change', function (event) {
   alert(event.value);
 });`
 
-const ulCode = `document.getElementById('todo-list').addEventListener('click', function (event) {
+const ulCode = `document.getElementById('todo-ReusableList').addEventReusableListener('click', function (event) {
   if (event.target.tagName === 'LI') {
-    event.target.classList.toggle('done');
+    event.target.classReusableList.toggle('done');
   }
 });`
 
@@ -81,21 +75,21 @@ function childClickedWithPropagation(event: any) {
 }
 
 const propagationCode = `
-document.getElementById('parent-1').addEventListener('click', function () {
+document.getElementById('parent-1').addEventReusableListener('click', function () {
     alert('Parent div tıklandı!');
 });
 
-document.getElementById('child-1').addEventListener('click', function (event) {
+document.getElementById('child-1').addEventReusableListener('click', function (event) {
     event.stopPropagation(); // Parent'a tırmanmasını engeller
     alert('Child butona tıklandı!');
 });`
 
 const propagationCode2 = `
-document.getElementById('parent-2').addEventListener('click', function () {
+document.getElementById('parent-2').addEventReusableListener('click', function () {
     alert('Parent div tıklandı!');
 });
 
-document.getElementById('child-2').addEventListener('click', function (event) {
+document.getElementById('child-2').addEventReusableListener('click', function (event) {
     alert('Child butona tıklandı!');
 });`
 
@@ -109,13 +103,13 @@ function handleAClick(event: any) {
 }
 
 const preventCode = `
-document.getElementById('a-1').addEventListener('click', function (event) {
+document.getElementById('a-1').addEventReusableListener('click', function (event) {
     event.preventDefault();
     alert('Link tıklandı ama yönlenme engellendi!');
 });`
 
 const preventCode2 = `
-document.getElementById('a-2').addEventListener('click', function () {
+document.getElementById('a-2').addEventReusableListener('click', function () {
     alert('Yönlendirme');
 });`
 
@@ -132,14 +126,14 @@ const summary = [
     <TheTopic title="Event Object Nedir?" :msg="'Tarayıcıda bir event gerçekleştiğinde, o olayla ilgili tüm bilgileri içeren özel bir nesne otomatik olarak oluşturulur: event.'" />
     <br>
     <TheTopic title="İçinde ne var?"/>
-    <List :items="eventFlow" />
+    <ReusableList :items="eventFlow" />
     <br>
     <TheTopic title="Anlatım İpucu:" :msg="'Bir olay meydana geldiğinde tarayıcı, o olayın ayrıntılarını paketleyip geliştiriciye teslim eder. Bu paketin adı event nesnesidir.'"/>
     <br>
     <TheTopic title="Örnek:" />
-    <Script title="Click Event">
+    <ExpandableScript title="Click Event">
       {{ buttonCode }}
-    </Script>
+    </ExpandableScript>
     <br>
     <SplitShowcase>
       <template #ui>
@@ -149,17 +143,17 @@ const summary = [
     <br>
     <div class="divider"></div>
     <br>
-    <TheTopic title="Event Delegation Nedir?" :msg="'Olayları, birden fazla küçük elemana ayrı ayrı dinleyici (listener) eklemek yerine, bu öğelerin ortak atasına tek bir listener ekleyerek yönetme tekniğidir.'" />
+    <TheTopic title="Event Delegation Nedir?" :msg="'Olayları, birden fazla küçük elemana ayrı ayrı dinleyici (ReusableListener) eklemek yerine, bu öğelerin ortak atasına tek bir ReusableListener ekleyerek yönetme tekniğidir.'" />
     <br>
     <TheTopic title="Neden kullanılır?"/>
-    <List :items="delegationFlow" />
+    <ReusableList :items="delegationFlow" />
     <br>
     <TheTopic title="Anlatım İpucu:" :msg="'Yüzlerce çocuğun olduğu bir sınıfta öğretmen her çocukla tek tek ilgilenmek yerine, sınıfı dinleyerek kimin ne yaptığını gözlemler ve sadece ihtiyacı olanla ilgilenir.'"/>
     <br>
     <TheTopic title="Örnek:" />
-    <Script title="Event Delegation Change Örneği">
+    <ExpandableScript title="Event Delegation Change Örneği">
       {{ changeCode }}
-    </Script>
+    </ExpandableScript>
     <br>
     <SplitShowcase>
       <template #ui>
@@ -178,13 +172,13 @@ const summary = [
       </template>
     </SplitShowcase>
     <br>
-    <Script title="Event Delegation Click Örneği">
+    <ExpandableScript title="Event Delegation Click Örneği">
       {{ ulCode }}
-    </Script>
+    </ExpandableScript>
     <br>
     <SplitShowcase>
       <template #ui>
-        <ul @click="toggleDone($event)" id="todo-list">
+        <ul @click="toggleDone($event)" id="todo-ReusableList">
           <li>Görev 1</li>
           <li>Görev 2</li>
           <li>Görev 3</li>
@@ -196,12 +190,12 @@ const summary = [
     </SplitShowcase>
     <br>
     <TheTopic title="Ekstra Bilgiler:" />
-    <Table :headers="['Özellik', 'Açıklama']" :rows="extras" />
+    <ReusableTable :headers="['Özellik', 'Açıklama']" :rows="extras" />
     <br>
     <TheTopic title="event.stopPropagation()" />
-    <Script title="event.stopPropagation olan örnek:">
+    <ExpandableScript title="event.stopPropagation olan örnek:">
       {{ propagationCode }}
-    </Script>
+    </ExpandableScript>
     <SplitShowcase>
       <template #ui>
         <div id="parent-1" @click="parentClicked" style="padding: 20px; background: #000;">
@@ -214,9 +208,9 @@ const summary = [
         <div>Parent Div (Tıkla) ve Child Button (Tıkla)</div>
       </template>
     </SplitShowcase>
-    <Script title="event.stopPropagation olmayan örnek:">
+    <ExpandableScript title="event.stopPropagation olmayan örnek:">
       {{ propagationCode2 }}
-    </Script>
+    </ExpandableScript>
     <SplitShowcase>
       <template #ui>
         <div id="parent-2" @click="parentClicked" style="padding: 20px; background: #000;">
@@ -231,9 +225,9 @@ const summary = [
     </SplitShowcase>
     <br>
     <TheTopic title="event.preventDefault()" />
-    <Script title="event.preventDefault olan örnek:">
+    <ExpandableScript title="event.preventDefault olan örnek:">
       {{ preventCode }}
-    </Script>
+    </ExpandableScript>
     <SplitShowcase>
       <template #ui>
         <a href="https://www.google.com" id="a-1" @click="handleAClickWithPrevent" style="padding: 20px; background: #000;">Google</a>
@@ -242,9 +236,9 @@ const summary = [
         <div>Yönlendirme'ye tıkla</div>
       </template>
     </SplitShowcase>
-    <Script title="event.preventDefault olmayan örnek:">
+    <ExpandableScript title="event.preventDefault olmayan örnek:">
       {{ preventCode2 }}
-    </Script>
+    </ExpandableScript>
     <SplitShowcase>
       <template #ui>
         <a href="https://www.google.com" id="a-2" @click="handleAClick" style="padding: 20px; background: #000;">Google</a>
@@ -257,7 +251,7 @@ const summary = [
     <div class="divider"></div>
     <br>
     <TheTopic title="Özet:" />
-    <List :items="summary" />
+    <ReusableList :items="summary" />
   </div>
 </template>
 

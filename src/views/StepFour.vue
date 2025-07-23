@@ -1,12 +1,8 @@
 <script setup lang="ts">
 import TheTopic from '@/components/TheTopic.vue';
-import Table from '@/components/ReusableTable.vue';
-import Script from '@/components/ExpandableScript.vue';
 import SplitShowcase from '@/components/SplitShowcase.vue';
-import List from '@/components/ReusableList.vue';
 import TheModal from '@/components/TheModal.vue';
 import { ref } from 'vue';
-import { setTimeout } from 'timers/promises';
 
 const modalVisible = ref(false);
 const modalMessage = ref('');
@@ -29,7 +25,7 @@ function clearTimeoutHandler() {
   }
 }
 
-const list = [
+const ReusableList = [
   'Kullanıcıyla etkileşime geçebilir',
   'Zamanlayıcı başlatabilir',
   'Tarayıcıda veri saklayabilir',
@@ -54,7 +50,7 @@ const consoleApis = [
   ["console.log()", "Mesajları geliştirici konsoluna yazdırır"],
   ["console.error()", "Hata mesajı olarak loglar"],
   ["console.warn()", "Uyarı mesajı loglar"],
-  ["console.table()", "Veriyi tablo halinde yazdırır"]
+  ["console.ReusableTable()", "Veriyi tablo halinde yazdırır"]
 ];
 
 const alertApis = [
@@ -92,7 +88,7 @@ const domApis = [
   ["window", "Tarayıcı penceresini temsil eder"],
   ["document", "HTML DOM ağacına erişim sağlar"],
   ["document.querySelector()", "Element seçer"],
-  ["addEventListener()", "Olayları dinlemek için kullanılır"]
+  ["addEventReusableListener()", "Olayları dinlemek için kullanılır"]
 ];
 
 const visibilityApis = [
@@ -102,8 +98,8 @@ const visibilityApis = [
 ];
 
 const eventApis = [
-  ["addEventListener()", "Event listener ekler"],
-  ["removeEventListener()", "Listener'ı kaldırır"],
+  ["addEventReusableListener()", "Event ReusableListener ekler"],
+  ["removeEventReusableListener()", "ReusableListener'ı kaldırır"],
   ["event.preventDefault()", "Varsayılan davranışı engeller"],
   ["event.stopPropagation()", "Event bubbling’i durdurur"]
 ];
@@ -117,45 +113,45 @@ const environmentApis = [
 ];
 
 const consoleCodes = `
-document.querySelector('.log-button').addEventListener('click', function (event) {
+document.querySelector('.log-button').addEventReusableListener('click', function (event) {
   console.log('Log triggerlandı.')
 });
 
-document.querySelector('.error-button').addEventListener('click', function (event) {
+document.querySelector('.error-button').addEventReusableListener('click', function (event) {
   console.error('Error triggerlandı.')
 });
 
-document.querySelector('.warn-button').addEventListener('click', function (event) {
+document.querySelector('.warn-button').addEventReusableListener('click', function (event) {
   console.warn('Warn triggerlandı.')
 });
 
-document.querySelector('.table-button').addEventListener('click', function (event) {
-  console.table(['Item1', 'Item2', 'Item3'])
+document.querySelector('.ReusableTable-button').addEventReusableListener('click', function (event) {
+  console.ReusableTable(['Item1', 'Item2', 'Item3'])
 });`
 
 const alertCodes = `
-document.querySelector('.alert-button').addEventListener('click', function (event) {
+document.querySelector('.alert-button').addEventReusableListener('click', function (event) {
   alert('Alert triggerlandı.')
 });
 
-document.querySelector('.confirm-button').addEventListener('click', function (event) {
+document.querySelector('.confirm-button').addEventReusableListener('click', function (event) {
   confirm('Confirm triggerlandı.')
 });
 
-document.querySelector('.prompt-button').addEventListener('click', function (event) {
+document.querySelector('.prompt-button').addEventReusableListener('click', function (event) {
   prompt('Prompt triggerlandı.')
 });`
 
 const timerCodes = `
 let timeoutId;
 
-document.querySelector('.settimeout-btn').addEventListener('click', function () {
+document.querySelector('.settimeout-btn').addEventReusableListener('click', function () {
   timeoutId = setTimeout(function () {
     alert('setTimeout tetiklendi!');
   }, 2000);
 });
 
-document.querySelector('.cleartimeout-btn').addEventListener('click', function () {
+document.querySelector('.cleartimeout-btn').addEventReusableListener('click', function () {
   clearTimeout(timeoutId);
 });
 `;
@@ -163,7 +159,7 @@ document.querySelector('.cleartimeout-btn').addEventListener('click', function (
 const intervalCodes = `
 let intervalId;
 
-document.querySelector('.setinterval-btn').addEventListener('click', function () {
+document.querySelector('.setinterval-btn').addEventReusableListener('click', function () {
   let timer = 1;
 
   intervalId = setInterval(function () {
@@ -171,7 +167,7 @@ document.querySelector('.setinterval-btn').addEventListener('click', function ()
   }, 1000);
 });
 
-document.querySelector('.clearinterval-btn').addEventListener('click', function () {
+document.querySelector('.clearinterval-btn').addEventReusableListener('click', function () {
   clearInterval(intervalId);
 });
 `;
@@ -212,12 +208,12 @@ function showAlert(text: string) {
 }
 
 const localStorageCodes = `
-document.getElementById('saveBtn').addEventListener('click', function() {
+document.getElementById('saveBtn').addEventReusableListener('click', function() {
   const value = document.getElementById('myInput').value;
   localStorage.setItem('myKey', value);
 });
 
-document.getElementById('readBtn').addEventListener('click', function() {
+document.getElementById('readBtn').addEventReusableListener('click', function() {
   const value = localStorage.getItem('myKey');
   alert('localStorage\'dan okunan: ' + value);
 });
@@ -238,70 +234,70 @@ function readFromLocalStorage() {
   <div class="step-four">
     <TheModal :visible="modalVisible" :message="modalMessage" @close="modalVisible = false" />
     <TheTopic title="Temel Web API’leri Nedir?" :msg="'Web API’leri, tarayıcının bize sunduğu hazır ve standartlaşmış JavaScript fonksiyonlarıdır. Bu API’ler sayesinde web sayfaları:'" />
-    <List :items="list" />
+    <ReusableList :items="ReusableList" />
     <br>
     <TheTopic title="API Ne Demek?'" :msg="'API (Application Programming Interface), bir uygulamanın başka bir kod parçasıyla konuşmasını sağlayan arayüzdür.'" />
     <TheTopic :msg="'Tarayıcılar, JavaScript\'e bu tür arayüzler (API\'ler) sağlar ki biz de bu arayüzleri kullanarak gelişmiş işlemler yapabilelim.'" />
     <br>
     <TheTopic title="Temel Web API’lere Örnekler:"/>
-    <Table :headers="['API', 'Ne iş yarar']" :rows="apis" />
+    <ReusableTable :headers="['API', 'Ne iş yarar']" :rows="apis" />
     <br>
     <TheTopic title="Neden Önemlidir?"/>
-    <List :items="['Bu API\'ler sayesinde tarayıcı sadece “bir şey gösteren” değil, kullanıcıyla etkileşim kuran ve dinamik davranan bir ortama dönüşür.', 'Temel API’ler, modern uygulamaların temel yapı taşlarıdır (SPA, PWA, interaktif formlar vb.).']"/>
+    <ReusableList :items="['Bu API\'ler sayesinde tarayıcı sadece “bir şey gösteren” değil, kullanıcıyla etkileşim kuran ve dinamik davranan bir ortama dönüşür.', 'Temel API’ler, modern uygulamaların temel yapı taşlarıdır (SPA, PWA, interaktif formlar vb.).']"/>
     <br>
     <TheTopic title="Teknik Olarak Nereden Geliyorlar?"/>
-    <List :items="['Bu API’ler JavaScript’in kendisinden değil, tarayıcının (Chrome, Firefox, Safari) sunduğu ortamdan gelir.', 'Yani bunlar **“tarayıcı destekli JavaScript özellikleri”**dir.']"/>
+    <ReusableList :items="['Bu API’ler JavaScript’in kendisinden değil, tarayıcının (Chrome, Firefox, Safari) sunduğu ortamdan gelir.', 'Yani bunlar **“tarayıcı destekli JavaScript özellikleri”**dir.']"/>
     <br>
     <div class="divider"></div>
     <br>
     <TheTopic title="Temel Web API'leri"/>
     <TheTopic title="Konsol & Geliştirici Araçları" :msg="'Tarayıcıya log yazmak ve debug işlemlerini kolaylaştırmak için kullanılır.'"/>
-    <Table :headers="headers" :rows="consoleApis" />
+    <ReusableTable :headers="headers" :rows="consoleApis" />
     <br>
     <div class="divider"></div>
     <br>
     <TheTopic title="Kullanıcı Bildirimleri" :msg="'Kullanıcıyla iletişim kurmak için tarayıcı üzerinden açılan popup mesaj kutularıdır.'"/>
-    <Table :headers="headers" :rows="alertApis" />
+    <ReusableTable :headers="headers" :rows="alertApis" />
     <br>
     <div class="divider"></div>
     <br>
     <TheTopic title="Zamanlayıcılar" :msg="'Zaman bazlı işlemleri (gecikmeli ya da periyodik) gerçekleştirmek için kullanılır.'"/>
-    <Table :headers="headers" :rows="timerApis" />
+    <ReusableTable :headers="headers" :rows="timerApis" />
     <br>
     <div class="divider"></div>
     <br>
     <TheTopic title="Tarayıcı Depolama (Storage API)" :msg="'Kullanıcının tarayıcısında veri saklamayı sağlayan kalıcı ve geçici depolama alanlarıdır.'"/>
-    <Table :headers="headers" :rows="storageApis" />
+    <ReusableTable :headers="headers" :rows="storageApis" />
     <br>
     <div class="divider"></div>
     <br>
     <TheTopic title="Veri İşleme (JSON)" :msg="'Veriyi string’e çevirme ve tekrar nesneye dönüştürme işlemleri için kullanılır.'"/>
-    <Table :headers="headers" :rows="jsonApis" />
+    <ReusableTable :headers="headers" :rows="jsonApis" />
     <br>
     <div class="divider"></div>
     <br>
     <TheTopic title="Ağ (Network) API’leri" :msg="'Sunucudan veri çekmek ya da veri göndermek için kullanılır; web servisleriyle iletişim kurar.'"/>
-    <Table :headers="headers" :rows="networkApis" />
+    <ReusableTable :headers="headers" :rows="networkApis" />
     <br>
     <div class="divider"></div>
     <br>
     <TheTopic title="Window ve DOM API’leri" :msg="'Tarayıcı penceresi ve HTML dokümanı ile etkileşim kurmak için kullanılan temel arayüzlerdir.'"/>
-    <Table :headers="headers" :rows="domApis" />
+    <ReusableTable :headers="headers" :rows="domApis" />
     <br>
     <div class="divider"></div>
     <br>
     <TheTopic title="Görünürlük ve Oturum Kontrolü" :msg="'Sekme durumu, sayfa kapanışı gibi olayları kontrol etmek için kullanılır.'"/>
-    <Table :headers="headers" :rows="visibilityApis" />
+    <ReusableTable :headers="headers" :rows="visibilityApis" />
     <br>
     <div class="divider"></div>
     <br>
     <TheTopic title="Etkinlik ve Olay Yönetimi" :msg="'Kullanıcının sayfayla olan etkileşimlerini (click, scroll, input vb.) dinlemek ve yönetmek için kullanılır.'"/>
-    <Table :headers="headers" :rows="eventApis" />
+    <ReusableTable :headers="headers" :rows="eventApis" />
     <br>
     <div class="divider"></div>
     <br>
     <TheTopic title="Cihaz & Ortam API’leri" :msg="'Kullanıcının cihazı ve tarayıcı ortamıyla ilgili bilgileri elde etmek için kullanılır.'"/>
-    <Table :headers="headers" :rows="environmentApis" />
+    <ReusableTable :headers="headers" :rows="environmentApis" />
     <br>
     <div class="divider"></div>
     <br>
@@ -341,7 +337,7 @@ function readFromLocalStorage() {
     <br>
     <SplitShowcase>
       <template #ui>
-        <button @click="console.table(['Item1', 'Item2', 'Item3'])" class="table-button" style=" width: 150px; padding: 5px; margin: 0 auto;">Table Button</button>
+        <button @click="console.table(['Item1', 'Item2', 'Item3'])" class="ReusableTable-button" style=" width: 150px; padding: 5px; margin: 0 auto;">ReusableTable Button</button>
       </template>
       <template #command>
         <div>Butona basın ve console'u kontrol edin</div>
