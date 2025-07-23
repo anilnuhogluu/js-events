@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import TheTopic from '@/components/TheTopic.vue';
+import TheModal from '@/components/TheModal.vue';
+import ReusableList from '@/components/ReusableList.vue';
+
 import { ref } from 'vue';
 
 const modalVisible = ref(false);

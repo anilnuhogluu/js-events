@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import TheTopic from '@/components/TheTopic.vue';
-import SplitShowcase from '@/components/SplitShowcase.vue';
 import TheModal from '@/components/TheModal.vue';
+import ReusableList from '@/components/ReusableList.vue';
+import ReusableTable from '@/components/ReusableTable.vue';
+import ExpandableScript from '@/components/ExpandableScript.vue';
+import SplitShowcase from '@/components/SplitShowcase.vue';
 import { ref } from 'vue';
 
 const modalVisible = ref(false);
@@ -25,7 +28,7 @@ function clearTimeoutHandler() {
   }
 }
 
-const ReusableList = [
+const ReusableListExamples = [
   'Kullanıcıyla etkileşime geçebilir',
   'Zamanlayıcı başlatabilir',
   'Tarayıcıda veri saklayabilir',
@@ -234,7 +237,7 @@ function readFromLocalStorage() {
   <div class="step-four">
     <TheModal :visible="modalVisible" :message="modalMessage" @close="modalVisible = false" />
     <TheTopic title="Temel Web API’leri Nedir?" :msg="'Web API’leri, tarayıcının bize sunduğu hazır ve standartlaşmış JavaScript fonksiyonlarıdır. Bu API’ler sayesinde web sayfaları:'" />
-    <ReusableList :items="ReusableList" />
+    <ReusableList :items="ReusableListExamples" />
     <br>
     <TheTopic title="API Ne Demek?'" :msg="'API (Application Programming Interface), bir uygulamanın başka bir kod parçasıyla konuşmasını sağlayan arayüzdür.'" />
     <TheTopic :msg="'Tarayıcılar, JavaScript\'e bu tür arayüzler (API\'ler) sağlar ki biz de bu arayüzleri kullanarak gelişmiş işlemler yapabilelim.'" />
@@ -304,9 +307,9 @@ function readFromLocalStorage() {
     <TheTopic title="Temel WEB API Kullanımları"/>
     <br>
     <TheTopic title="Konsol & Geliştirici Araçları"/>
-    <Script title="Console APIs">
+    <ExpandableScript title="Console APIs">
       {{ consoleCodes }}
-    </Script>
+    </ExpandableScript>
     <br>
     <SplitShowcase>
       <template #ui>
@@ -347,9 +350,9 @@ function readFromLocalStorage() {
     <div class="divider"></div>
     <br>
     <TheTopic title="Kullanıcı Bildirimleri"/>
-    <Script title="Alert APIs">
+    <ExpandableScript title="Alert APIs">
       {{ alertCodes }}
-    </Script>
+    </ExpandableScript>
     <br>
     <SplitShowcase>
       <template #ui>
@@ -381,9 +384,9 @@ function readFromLocalStorage() {
     <div class="divider"></div>
     <br>
     <TheTopic title="Zamanlayıcılar"/>
-    <Script title="Timer APIs - setTimeout() & clearTimeout()">
+    <ExpandableScript title="Timer APIs - setTimeout() & clearTimeout()">
       {{ timerCodes }}
-    </Script>
+    </ExpandableScript>
     <br>
     <SplitShowcase>
       <template #ui>
@@ -398,9 +401,9 @@ function readFromLocalStorage() {
     <div class="divider"></div>
     <br>
     <TheTopic title="Periyodik Zamanlayıcılar (setInterval & clearInterval)"/>
-    <Script title="Timer APIs - setInterval() & clearInterval()">
+    <ExpandableScript title="Timer APIs - setInterval() & clearInterval()">
       {{ intervalCodes }}
-    </Script>
+    </ExpandableScript>
     <br>
     <SplitShowcase>
       <template #ui>
@@ -415,9 +418,9 @@ function readFromLocalStorage() {
     <div class="divider"></div>
     <br>
     <TheTopic title="Tarayıcı Depolama (Storage API)"/>
-    <Script title="localStorage Kullanımı (Pure JS)">
+    <ExpandableScript title="localStorage Kullanımı (Pure JS)">
       {{ localStorageCodes }}
-    </Script>
+    </ExpandableScript>
     <br>
     <SplitShowcase>
       <template #ui>

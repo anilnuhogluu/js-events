@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import TheTopic from '@/components/TheTopic.vue';
+import ReusableList from '@/components/ReusableList.vue';
+import ReusableTable from '@/components/ReusableTable.vue';
 
 const headerss = ['Olay Türü', 'Açıklama']
 const rowss = [
