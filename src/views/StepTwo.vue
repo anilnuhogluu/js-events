@@ -325,7 +325,7 @@ onMounted(() => {
   <div class="step-two">
     <TheModal :visible="modalVisible" :message="modalMessage" @close="modalVisible = false" />
     <TheTopic title="Mouse Events (Fare Olayları)" msg="Kullanıcının fare ile gerçekleştirdiği eylemleri (tıklama, üzerine gelme, sağ tıklama vb.) algılamak ve bu eylemlere tepki vermek için kullanılır. Örneğin: Bir butona tıklanınca bir işlem başlatmak."  />
-    <Table :headers="headers" :rows="mouseEvents" />
+    <ReusableTable :headers="headers" :rows="mouseEvents" />
     <br>
     <TheTopic title="Mouse Events Kullanımları"/>
     <br>
@@ -399,7 +399,7 @@ onMounted(() => {
     <div class="divider"></div>
     <br>
     <TheTopic title="Keyboard Events (Klavye Olayları)" msg="Kullanıcının klavye üzerindeki tuşlara basmasıyla oluşan olaylardır. Formlar, arama kutuları ve klavye kısayolları gibi etkileşimlerde kullanılır." />
-    <Table :headers="headers" :rows="keyboardEvents" />
+    <ReusableTable :headers="headers" :rows="keyboardEvents" />
     <br>
     <TheTopic title="Keyboard Events Kullanımları"/>
     <br>
@@ -457,7 +457,7 @@ onMounted(() => {
     <div class="divider"></div>
     <br>
     <TheTopic title="Input/Form Events" msg="Form elemanlarında (input, textarea, checkbox, select, form) gerçekleşen değişiklikleri algılar. Kullanıcının veri girişi, form gönderimi ve doğrulama süreçlerinde kullanılır." />
-    <Table :headers="headers" :rows="formInputEvents" />
+    <ReusableTable :headers="headers" :rows="formInputEvents" />
     <br>
 
     <ExpandableScript title="Input Event">
@@ -554,7 +554,7 @@ onMounted(() => {
     <div class="divider"></div>
     <br>
     <TheTopic title="Clipboard Events" msg="Kullanıcının bir öğeyi kopyalaması, kesmesi veya yapıştırması gibi işlem sırasında tetiklenir. Özellikle güvenlik, metin işleme veya kullanıcı deneyimi açısından önemlidir." />
-    <Table :headers="headers" :rows="clipboardEvents" />
+    <ReusableTable :headers="headers" :rows="clipboardEvents" />
     <br>
        <ExpandableScript title="Copy Event">
       {{ copyCode }}
@@ -598,7 +598,7 @@ onMounted(() => {
     <div class="divider"></div>
     <br>
     <TheTopic title="Drag & Drop Events" msg="Bir öğeyi sürükleme ve bırakma etkileşimlerini kontrol etmeye yarar. Dosya yüklemeleri, listelerde öğe sıralama gibi işlemler için kullanılır." />
-    <Table :headers="headers" :rows="dragDropEvents" />
+    <ReusableTable :headers="headers" :rows="dragDropEvents" />
     <br>
     <ExpandableScript title="Dragstart Event">
       {{ dragstartCode }}
@@ -650,7 +650,7 @@ onMounted(() => {
     <div class="divider"></div>
     <br>
     <TheTopic title="Window & Document Events" msg="Tarayıcı penceresi veya sayfa (document) ile ilgili olayları kapsar. Sayfa yüklendiğinde, boyutu değiştiğinde, scroll yapıldığında veya kullanıcı sayfadan çıkmak üzereyken devreye girer."  />
-    <Table :headers="headers" :rows="windowNavigationEvents" />
+    <ReusableTable :headers="headers" :rows="windowNavigationEvents" />
     <br>
      <ExpandableScript title="Resize Event">
       {{ resizeCode }}
@@ -700,7 +700,7 @@ onMounted(() => {
     <div class="divider"></div>
     <br>
     <TheTopic title="Network & Media Events" msg="İnternet bağlantısı durum değişiklikleri ve medya oynatımıyla ilgili olayları kapsar. Kullanıcının çevrimdışı kalması, videonun başlaması ya da bitmesi gibi durumlarda kullanılır." />
-    <Table :headers="headers" :rows="networkMediaEvents" />
+    <ReusableTable :headers="headers" :rows="networkMediaEvents" />
     <br>
     <ExpandableScript title="Play Event">
       {{ playCode }}
@@ -750,7 +750,7 @@ onMounted(() => {
     <div class="divider"></div>
     <br>
     <TheTopic title="Animation & Transition Events" msg="CSS ile tanımlanan animasyonlar ve geçişler sırasında gerçekleşen olaylardır. Bir animasyon başladığında, sona erdiğinde veya tekrar ettiğinde devreye girer." />
-    <Table :headers="headers" :rows="animationTransitionEvents" />
+    <ReusableTable :headers="headers" :rows="animationTransitionEvents" />
     <br>
     <ExpandableScript title="Animationstart Event">
       {{ animationstartCode }}
@@ -820,7 +820,7 @@ onMounted(() => {
     <div class="divider"></div>
     <br>
     <TheTopic title="Touch & Pointer Events (Mobil / Tablet)" msg="Mobil cihazlar, tabletler ve stylus gibi aygıtlarla yapılan dokunma etkileşimleri ile fare/dokunmatik girişleri birleştirir. Modern tarayıcılar için hem dokunmatik hem mouse destekli sistemlerde önemlidir."  />
-    <Table :headers="headers" :rows="touchPointerEvents" />
+    <ReusableTable :headers="headers" :rows="touchPointerEvents" />
     <br>
     <!-- Touchstart örneği -->
     <ExpandableScript title="Touchstart Event">
@@ -873,7 +873,7 @@ onMounted(() => {
     <div class="divider"></div>
     <br>
     <TheTopic title="Security & System Events" msg="Sayfa görünürlüğü, tam ekran modu veya localStorage değişimi gibi sistemsel olayları yakalamaya yarar. Bir sekme gizlendiğinde analiz durdurmak veya başka sekmede yapılan değişiklikleri senkronize etmek için kullanılır."  />
-    <Table :headers="headers" :rows="visibilityStorageEvents" />
+    <ReusableTable :headers="headers" :rows="visibilityStorageEvents" />
     <br>
     <!-- visibilitychange örneği -->
     <ExpandableScript title="Visibilitychange Event">
@@ -915,7 +915,7 @@ onMounted(() => {
     <div class="divider"></div>
     <br>
     <TheTopic title="Mutation & Observer Events"  msg="DOM'da yapılan değişiklikleri algılamak için kullanılır. Örneğin bir öğe DOM’a eklendiğinde veya değiştiğinde MutationObserver ile tespit edilebilir. Not: Bu bir “event listener“ değil, ancak reaktif davranış sağlar." />
-    <Table :headers="headers" :rows="observerLikeMechanisms" />
+    <ReusableTable :headers="headers" :rows="observerLikeMechanisms" />
     <br>
     <!-- MutationObserver örneği -->
     <ExpandableScript title="MutationObserver Kullanımı">
