@@ -144,23 +144,23 @@ function clearWeatherResult() {
     <TheTopic msg="Hedef: Gerçek dünyaya veriyle bağlanmayı göstermek."/>
     <br>
     <TheTopic title="Public API Nedir?" msg="Public API'ler, herkese açık olarak sunulan, çoğu zaman kayıtlı veya kayıtsız kullanılabilen API’lardır."/>
-    <List :items="['Genellikle GET ve POST istekleri destekler.', 'Bazıları API Key ister, bazıları doğrudan kullanılabilir.']"/>
+    <ReusableList :items="['Genellikle GET ve POST istekleri destekler.', 'Bazıları API Key ister, bazıları doğrudan kullanılabilir.']"/>
     <br>
     <TheTopic title="API Key Nedir?" msg="API Key, bir servisi kullanan uygulamayı tanımak ve erişimi sınırlandırmak için verilen özel bir anahtardır."/>
-    <List :items="['Tıpkı bir şifre gibi.', 'API sağlayıcısı tarafından verilir.', 'Bazı API’ler API Key olmadan kullanılabilir (GitHub gibi).']"/>
+    <ReusableList :items="['Tıpkı bir şifre gibi.', 'API sağlayıcısı tarafından verilir.', 'Bazı API’ler API Key olmadan kullanılabilir (GitHub gibi).']"/>
     <br>
     <div class="divider"></div>
     <br>
     <TheTopic title="Uygulama 1: GitHub API ile Kullanıcı Bilgisi Çekme"/>
     <br>
     <TheTopic title="Kullanım Hedefi:"/>
-    <List :items="['Kullanıcıdan GitHub kullanıcı adı al', 'https://api.github.com/users/USERNAME adresine istek at', 'Gelen veriyi DOM\'da görüntüle']"/>
+    <ReusableList :items="['Kullanıcıdan GitHub kullanıcı adı al', 'https://api.github.com/users/USERNAME adresine istek at', 'Gelen veriyi DOM\'da görüntüle']"/>
     <br>
     <ExpandableScript title="Github üzerinden kullanıcı bilgilerini çekme">
       {{ githubExampleCode  }}
     </ExpandableScript>
     <br>
-    <List :items="['fetch() ile veri çekiyoruz', 'async/await kullanımı', 'API dönen JSON objesi', 'DOM’a veriyi yerleştirme']"/>
+    <ReusableList :items="['fetch() ile veri çekiyoruz', 'async/await kullanımı', 'API dönen JSON objesi', 'DOM’a veriyi yerleştirme']"/>
     <br>
     <SplitShowcase>
       <template #ui>
@@ -190,11 +190,11 @@ function clearWeatherResult() {
     <TheTopic title="Uygulama 2: OpenWeather API"/>
     <br>
     <TheTopic title="Kullanım Hedefi:"/>
-    <List :items="['Kullanıcı şehir girsin', 'API’den o şehir için hava durumu verisi alınsın', 'DOM’a hava + sıcaklık + ikon gösterilsin']"/>
+    <ReusableList :items="['Kullanıcı şehir girsin', 'API’den o şehir için hava durumu verisi alınsın', 'DOM’a hava + sıcaklık + ikon gösterilsin']"/>
     <TheTopic msg="Not: OpenWeather API API Key gerektirir."/>
     <br>
     <TheTopic title="Hazırlık:"/>
-    <List :items="['https://openweathermap.org/ → kayıt → API Key alın', 'Geo API: https://api.openweathermap.org/geo/1.0/direct?q=ISTANBUL&limit=1&appid=YOUR_KEY', 'Weather API: https://api.openweathermap.org/data/2.5/weather?lat=41.0082&lon=28.9784&appid=YOUR_KEY&units=metric']"/>
+    <ReusableList :items="['https://openweathermap.org/ → kayıt → API Key alın', 'Geo API: https://api.openweathermap.org/geo/1.0/direct?q=ISTANBUL&limit=1&appid=YOUR_KEY', 'Weather API: https://api.openweathermap.org/data/2.5/weather?lat=41.0082&lon=28.9784&appid=YOUR_KEY&units=metric']"/>
     <br>
     <ExpandableScript title="OpenWeather API ile Hava Durumu">
       {{ weatherExample }}
